@@ -1,0 +1,406 @@
+<html>
+<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<link href="fadeTransitions.css" rel="stylesheet" type="text/css" media="all">
+
+			<style>
+			sectionText {
+				font-size:32px;
+				font-weight:bolder;
+				color: blue;
+				text-align: center;
+			}
+			
+			*{
+				font-family: "Arial";
+				font-size:16px;
+				color:black;
+			}
+			
+			.image-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+				gap: 20px;
+			}
+			
+			
+			a {
+				font-weight: bolder;
+				color: blue;
+			}
+			
+			.galleryImg {
+			  border-radius: 5px;
+			  cursor: pointer;
+			  transition: 0.3s;
+			  max-width:95%;
+			  margin-left:auto;
+			  margin-right:auto;
+			  display:block;
+			}
+			.galleryImg:hover {opacity: 0.7;}
+
+			.modal {
+				  display: none; /* Hidden by default */
+				  position: fixed; /* Stay in place */
+				  z-index: 1; /* Sit on top */
+				  padding-top: 100px; /* Location of the box */
+				  left: 0;
+				  top: 0;
+				  margin-left: auto;
+				  margin-right: auto;
+				  width: 100%; /* Full width */
+				  height: 100%; /* Full height */
+				  overflow: auto; /* Enable scroll if needed */
+				  background-color: rgb(0,0,0); /* Fallback color */
+				  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+			}
+
+			/* Modal Content (image) */
+			.modal-content {
+			  	display: block;
+				  max-width: 500px;
+				  max-height: 500px;
+				  max-width: 95%;
+			}
+
+			/* The Close Button */
+			.close {
+			  position: absolute;
+			  top: 15px;
+			  right: 35px;
+			  color: #f1f1f1;
+			  font-size: 40px;
+			  font-weight: bold;
+			  transition: 0.3s;
+			}
+
+			.close:hover,
+			.close:focus {
+			  color: #bbb;
+			  text-decoration: none;
+			  cursor: pointer;
+			}
+
+			/* Caption of Modal Image */
+			#caption {
+			  margin: auto;
+			  display: block;
+			  width: 80%;
+			  max-width: 700px;
+			  text-align: center;
+			  color: #ccc;
+			  padding: 10px 0;
+			  height: 150px;
+			}
+
+			  
+			/* Add Animation */
+			.modal-content, #caption {
+			  -webkit-animation-name: zoom;
+			  -webkit-animation-duration: 0.6s;
+			  animation-name: zoom;
+			  animation-duration: 0.6s;
+			}
+
+			
+			.outline {
+				color: white;
+				text-shadow:
+				-1px -1px 0 #000,
+				1px -1px 0 #000,
+				-1px 1px 0 #000,
+				1px 1px 0 #000;  
+			}
+
+			.banner {
+				position: relative;
+				text-align: center;
+				color: white;
+				height: 300px;
+				width: 100%;
+				background-size: cover;
+				}
+
+
+			.rectWash {
+				position: relative;
+				top: 240px;
+				height: 60px;
+				left: 0px;
+				width: 100%;
+				z-index: 0;
+				background-color:rgba(0, 128, 0, 0.7);
+			}
+
+	/* Bottom left text */
+			.banner-text {
+				font-size:20px;
+				font-weight:bolder;
+				position: relative;
+				text-align: center;
+				top: 8px;
+				color: white;
+			}
+/* Top left text */
+			.top-left {
+				position: absolute;
+				top: 50px;
+				left: 16px;
+			}
+
+			/* Top right text */
+			.top-right {
+				position: absolute;
+				top: px;
+				right: 16px;
+			}
+
+			/* Bottom right text */
+			.bottom-right {
+				position: absolute;
+				bottom: 8px;
+				right: 16px;
+			}
+
+			/* Centered text */
+			.centered {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			.horiz-centered {
+				position: relative;
+				left: 50%;
+				transform: translate(-50%, 0%);
+			}
+
+			.slideshowGroup {
+				display: none;
+			}
+
+			/* 100% Image Width on Smaller Screens */
+			@media only screen and (max-width: 700px){
+			}
+			
+			@media only screen and (max-width: 600px){
+
+			}
+
+			@media only screen and (max-width: 800px){
+
+			}
+
+			@media only screen and (min-width: 560px){
+
+			  .banner-text {
+				top: 18px;
+			  }
+			}
+
+			.navigationButtons {
+				display: flex; justify-content: center;
+			}
+			</style>
+			<script>
+				
+			var gCurrentSlideshowImageArray;
+			var gCurrentSlideIndex;
+
+			function showSlideAtIndex(slideIndex, imageArray)
+			{
+				if (slideIndex >= imageArray.length)
+					slideIndex = 0;
+				else if (slideIndex < 0)
+					slideIndex = imageArray.length - 1;
+				
+				var modalImg = document.getElementById("modalImg");
+				modalImg.src = imageArray[slideIndex].src;
+				gCurrentSlideIndex = slideIndex;
+			}
+
+			
+			function loadSlideshowForDivID(slideshowDivID)
+			{
+				var i;
+				var slideshowDivs = document.getElementsByClassName("slideshowGroup");
+				for (i = 0; i < slideshowDivs.length; i++) {
+					// find the div for this slideshow
+					if (slideshowDivs[i].id == slideshowDivID)
+					{
+						// find the images for this slideshow div
+						var slideshowDiv = slideshowDivs[i];
+						var images = slideshowDiv.getElementsByTagName("img");
+						gCurrentSlideshowImageArray = images;
+						gCurrentSlideIndex = 0;
+						showSlideAtIndex(0, images);
+					}
+				}
+			}
+
+			function setupModalImage(img, slideshowDivID)
+			{
+				// Get the modal
+				var modal = document.getElementById("myModal");
+				var modalImg = document.getElementById("modalImg");
+				var captionText = document.getElementById("caption");
+				var span = document.getElementsByClassName("close")[0];
+				
+				modalImg.classList.add('fade-in');
+
+				img.onclick = function(){
+				  modal.style.display = "block";
+				  captionText.innerHTML = this.alt;
+				  loadSlideshowForDivID(slideshowDivID);
+				}
+			}
+
+
+			function onload()
+			{
+				// Get the <span> element that closes the modal
+				var modal = document.getElementById("myModal");
+				var span = document.getElementsByClassName("close")[0];
+
+				// When the user clicks on <span> (x), close the modal
+				span.onclick = function() {
+				  modal.style.display = "none";
+				}
+			}
+			</script>
+
+</head>
+<body style="background-color:#DDDDDD;" onload="onload();">
+<div class="horiz-centered" style="max-width: 1024; ">
+<div style="margin: 20px; padding: 20px; background-color: white">
+	<div class="banner" style="background-image: url('images/acorn-banner.jpg');background-repeat: no-repeat; background-position:center;">
+		<div class="rectWash"><span class="banner-text outline">Welcome to BSA Girls' Troop 2566, Saratoga, CA</span></div>
+	  </div>
+	  <p style="margin: 10px; margin-top: 50px;margin-bottom: 30px">
+Scouts BSA Troop 2566 is one of the first Girls' Troops in the entire United States, with a strong parent-volunteer base and an emphasis on community service. We focus on teaching outdoor skills, values, citizenship, and leadership.<br><br>
+
+Girls can join Scouts BSA if they have completed the fifth grade and are at least 10 years old, OR have earned the Arrow of Light Award and are at least 10 years old, OR are age 11 but have not reached age 18.<br><br>
+
+<img style="max-width: 200px; max-height: 200px" class="horiz-centered" id="equality knot" src="images/equality-knot.jpg" alt="Scouting Equality Knot"><br><br>
+Our chartering organization is Menlo Church Saratoga. We are geographically centered on the Blue Hills neighborhood in Saratoga, CA, and along with our linked <a href="https://www.bsa566.org">Boys Troop 566</a>, we include boys and girls from Saratoga, Cupertino, Los Gatos, Campbell, San Jose and Santa Clara. We are multi-cultural and multi-faith, and we consider this diversity a benefit to our program.<br><br>
+
+Where some Troops have more "contemporary" programs, Troop 566 and 2566 feature a traditional Scouting experience for both Boys and Girls, with strong patrols, monthly camping, a high-adventure (Venturing Crew 566) option, leadership and skills instruction, respect for others, and good, clean fun.<br><br>
+
+For more information, contact our Scoutmaster, <a href="mailto:scoutmaster@bsa2566.com">Nancy Mautino</a>.<br><br>
+Check out the photos below to see what we've been up to! <br><br>
+<div class="image-grid">
+	<img class="galleryImg" id="Big-Basin" src="poster-frames/BigBasin.jpg" alt="Big Basin" onload="setupModalImage(this, 'big-basin')">
+	<img class="galleryImg" id="Glass-blowing" src="poster-frames/Glassblowing.jpg" alt="Glass Blowing" onload="setupModalImage(this, 'glass-blowing')">
+	<img class="galleryImg" id="Henry-Coe" src="poster-frames/HenryCoe.jpg" alt="Henry Coe" onload="setupModalImage(this, 'henry-coe')">
+	<img class="galleryImg" id="Woodfires" src="poster-frames/Woodfires.jpg" alt="Woodfires" onload="setupModalImage(this, 'woodfires')">
+	<img class="galleryImg" id="Wente" src="poster-frames/Wente.jpg" alt="Wente Summer Camp" onload="setupModalImage(this, 'wente')">
+	<img class="galleryImg" id="Kirkwood" src="poster-frames/Kirkwood.jpg" alt="Kirkwood Ski Resort" onload="setupModalImage(this, 'kirkwood')">
+	<img class="galleryImg" id="Acorn-hike" src="poster-frames/AcornHike.jpg" alt="Saratoga Acorn Hike" onload="setupModalImage(this, 'acorn-hike')">
+	<img class="galleryImg" id="Welding" src="poster-frames/Welding.jpg" alt="Welding Merit Badge" onload="setupModalImage(this, 'welding')">
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content horiz-centered" id="modalImg"><br/>
+  <div class="navigationButtons">
+	  <button class="w3-button w3-display-left" onclick="showSlideAtIndex(gCurrentSlideIndex - 1, gCurrentSlideshowImageArray)">&#10094;</button>
+	  <button class="w3-button w3-display-right" onclick="showSlideAtIndex(gCurrentSlideIndex + 1, gCurrentSlideshowImageArray)">&#10095;</button>
+</div>>
+  <div id="caption"></div>
+  </div>
+
+<div class="slideshowGroup" id="acorn-hike">
+	<img class="slideshowImage" src="slideshow/acorn-hike/_DSC1559.jpg">
+	<img class="slideshowImage" src="slideshow/acorn-hike/_DSC1563.jpg">
+	<img class="slideshowImage" src="slideshow/acorn-hike/_DSC1611.jpg">
+	<img class="slideshowImage" src="slideshow/acorn-hike/_DSC1627.jpg">
+	<img class="slideshowImage" src="slideshow/acorn-hike/_DSC1705.jpg">
+	<img class="slideshowImage" src="slideshow/acorn-hike/_DSC1706.jpg">
+	<img class="slideshowImage" src="slideshow/acorn-hike/_DSC1822.jpg">
+</div>
+
+<div class="slideshowGroup" id="big-basin">
+	<img class="slideshowImage" src="slideshow/big-basin/IMG_4579.jpg">
+	<img class="slideshowImage" src="slideshow/big-basin/IMG_4580.jpg">
+	<img class="slideshowImage" src="slideshow/big-basin/IMG_4581.jpg">
+	<img class="slideshowImage" src="slideshow/big-basin/IMG_4583.jpg">
+	<img class="slideshowImage" src="slideshow/big-basin/IMG_4584.jpg">
+</div>
+
+<div class="slideshowGroup" id="glass-blowing">
+	<img class="slideshowImage" src="slideshow/glass-blowing/Glass Blowing.jpg">
+	<img class="slideshowImage" src="slideshow/glass-blowing/IMG_3004.jpg">
+	<img class="slideshowImage" src="slideshow/glass-blowing/IMG_3903.jpg">
+	<img class="slideshowImage" src="slideshow/glass-blowing/IMG_5850.jpg">
+	<img class="slideshowImage" src="slideshow/glass-blowing/IMG_8721.jpg">
+</div>
+
+<div class="slideshowGroup" id="henry-coe">
+	<img class="slideshowImage" src="slideshow/henry-coe/DSC03337.jpg">
+	<img class="slideshowImage" src="slideshow/henry-coe/DSC03350.jpg">
+	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2846.jpg">
+	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2848.jpg">
+	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2850.jpg">
+	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2853.jpg">
+	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2855.jpg">
+	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2859.jpg">
+	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2860.jpg">
+</div>
+
+<div class="slideshowGroup" id="kirkwood">
+	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4910.jpg">
+	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4912 2.jpg">
+	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4914.jpg">
+	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4926.jpg">
+	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4946.jpg">
+	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4959.jpg">
+	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4965.jpg">
+	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4970.jpg">
+	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4983.jpg">
+	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4988.jpg">
+</div>
+
+<div class="slideshowGroup" id="welding">
+	<img class="slideshowImage" src="slideshow/welding/20200718_145751.jpg">
+	<img class="slideshowImage" src="slideshow/welding/20200718_150420.jpg">
+	<img class="slideshowImage" src="slideshow/welding/20200718_153040.jpg">
+	<img class="slideshowImage" src="slideshow/welding/20200718_161047.jpg">
+</div>
+
+<div class="slideshowGroup" id="wente">
+	<img class="slideshowImage" src="slideshow/wente/DSC03533.jpg">
+	<img class="slideshowImage" src="slideshow/wente/DSC03606.jpg">
+	<img class="slideshowImage" src="slideshow/wente/DSC03616.jpg">
+	<img class="slideshowImage" src="slideshow/wente/DSC03645.jpg">
+	<img class="slideshowImage" src="slideshow/wente/DSC03668.jpg">
+	<img class="slideshowImage" src="slideshow/wente/IMG_2847.jpg">
+	<img class="slideshowImage" src="slideshow/wente/IMG_3283.jpg">
+	<img class="slideshowImage" src="slideshow/wente/IMG_3303.jpg">
+	<img class="slideshowImage" src="slideshow/wente/IMG_3321.jpg">
+	<img class="slideshowImage" src="slideshow/wente/IMG_3392.jpg">
+	<img class="slideshowImage" src="slideshow/wente/IMG_3538.jpg">
+	<img class="slideshowImage" src="slideshow/wente/IMG_3574.jpg">
+</div>
+
+<div class="slideshowGroup" id="woodfires">
+	<img class="slideshowImage" src="slideshow/woodfires/DSC03253.jpg">
+	<img class="slideshowImage" src="slideshow/woodfires/DSC03268.jpg">
+	<img class="slideshowImage" src="slideshow/woodfires/DSC03300.jpg">	
+	<img class="slideshowImage" src="slideshow/woodfires/DSC03302.jpg">
+	<img class="slideshowImage" src="slideshow/woodfires/IMG_2201.jpg">
+	<img class="slideshowImage" src="slideshow/woodfires/IMG_2243.jpg">
+</div>
+
+</p>
+<p style="text-align:center;margin: 35px; margin-top: 50px;margin-bottom: 30px">
+For more information, contact our Scoutmaster, <a href="mailto:scoutmaster@bsa2566.com">Nancy Mautino</a>.<br><br></p>
+
+<a href="https://my.scouting.org/"><img href="" style="max-width: 200px; max-height: 200px" class="horiz-centered" id="equality knot" src="images/YPTIcon.jpg" alt="Youth Protection Training"></a><br>
+</div>
+</div>
+</body>
+</html>

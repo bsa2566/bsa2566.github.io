@@ -3,6 +3,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<link href="fadeTransitions.css" rel="stylesheet" type="text/css" media="all">
+		<title>Welcome to BSA Troop 2566, Saratoga CA</title>
 
 			<style>
 			sectionText {
@@ -215,6 +216,14 @@
 						// find the images for this slideshow div
 						var slideshowDiv = slideshowDivs[i];
 						var images = slideshowDiv.getElementsByTagName("img");
+						for (j = 0; j < images.length; j++) {
+							var image = images[j];
+							var src = image.getAttribute("src");
+							var imgSrc = image.getAttribute("img-src");
+							if (imgSrc != null)
+								image.setAttribute("src", imgSrc);
+						}
+
 						gCurrentSlideshowImageArray = images;
 						gCurrentSlideIndex = 0;
 						showSlideAtIndex(0, images);
@@ -299,97 +308,97 @@ Check out the photos below to see what we've been up to! Click on a photo to see
   </div>
 
 <div class="slideshowGroup" id="acorn-hike">
-	<img class="slideshowImage" src="slideshow/acorn-hike/DSC1559.jpg">
-	<img class="slideshowImage" src="slideshow/acorn-hike/DSC1563.jpg">
-	<img class="slideshowImage" src="slideshow/acorn-hike/DSC1611.jpg">
-	<img class="slideshowImage" src="slideshow/acorn-hike/DSC1627.jpg">
-	<img class="slideshowImage" src="slideshow/acorn-hike/DSC1705.jpg">
-	<img class="slideshowImage" src="slideshow/acorn-hike/DSC1706.jpg">
-	<img class="slideshowImage" src="slideshow/acorn-hike/DSC1822.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/acorn-hike/DSC1559.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/acorn-hike/DSC1563.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/acorn-hike/DSC1611.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/acorn-hike/DSC1627.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/acorn-hike/DSC1705.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/acorn-hike/DSC1706.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/acorn-hike/DSC1822.jpg">
 </div>
 
 <div class="slideshowGroup" id="big-basin">
-	<img class="slideshowImage" src="slideshow/big-basin/IMG_4579.jpg">
-	<img class="slideshowImage" src="slideshow/big-basin/IMG_4580.jpg">
-	<img class="slideshowImage" src="slideshow/big-basin/IMG_4581.jpg">
-	<img class="slideshowImage" src="slideshow/big-basin/IMG_4583.jpg">
-	<img class="slideshowImage" src="slideshow/big-basin/IMG_4584.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/big-basin/IMG_4579.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/big-basin/IMG_4580.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/big-basin/IMG_4581.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/big-basin/IMG_4583.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/big-basin/IMG_4584.jpg">
 </div>
 
 <div class="slideshowGroup" id="glass-blowing">
-	<img class="slideshowImage" src="slideshow/glass-blowing/Glass Blowing.jpg">
-	<img class="slideshowImage" src="slideshow/glass-blowing/IMG_3004.jpg">
-	<img class="slideshowImage" src="slideshow/glass-blowing/IMG_3903.jpg">
-	<img class="slideshowImage" src="slideshow/glass-blowing/IMG_5850.jpg">
-	<img class="slideshowImage" src="slideshow/glass-blowing/IMG_8721.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/glass-blowing/Glass Blowing.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/glass-blowing/IMG_3004.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/glass-blowing/IMG_3903.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/glass-blowing/IMG_5850.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/glass-blowing/IMG_8721.jpg">
 </div>
 
 <div class="slideshowGroup" id="henry-coe">
-	<img class="slideshowImage" src="slideshow/henry-coe/DSC03337.jpg">
-	<img class="slideshowImage" src="slideshow/henry-coe/DSC03350.jpg">
-	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2846.jpg">
-	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2848.jpg">
-	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2850.jpg">
-	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2853.jpg">
-	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2855.jpg">
-	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2859.jpg">
-	<img class="slideshowImage" src="slideshow/henry-coe/IMG_2860.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/henry-coe/DSC03337.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/henry-coe/DSC03350.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/henry-coe/IMG_2846.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/henry-coe/IMG_2848.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/henry-coe/IMG_2850.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/henry-coe/IMG_2853.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/henry-coe/IMG_2855.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/henry-coe/IMG_2859.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/henry-coe/IMG_2860.jpg">
 </div>
 
 <div class="slideshowGroup" id="kirkwood">
-	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4910.jpg">
-	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4912 2.jpg">
-	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4914.jpg">
-	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4926.jpg">
-	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4946.jpg">
-	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4959.jpg">
-	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4965.jpg">
-	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4970.jpg">
-	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4983.jpg">
-	<img class="slideshowImage" src="slideshow/kirkwood/IMG_4988.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/kirkwood/IMG_4910.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/kirkwood/IMG_4912 2.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/kirkwood/IMG_4914.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/kirkwood/IMG_4926.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/kirkwood/IMG_4946.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/kirkwood/IMG_4959.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/kirkwood/IMG_4965.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/kirkwood/IMG_4970.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/kirkwood/IMG_4983.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/kirkwood/IMG_4988.jpg">
 </div>
 
 <div class="slideshowGroup" id="welding">
-	<img class="slideshowImage" src="slideshow/welding/20200718_145751.jpg">
-	<img class="slideshowImage" src="slideshow/welding/20200718_150420.jpg">
-	<img class="slideshowImage" src="slideshow/welding/20200718_153040.jpg">
-	<img class="slideshowImage" src="slideshow/welding/20200718_161047.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/welding/20200718_145751.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/welding/20200718_150420.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/welding/20200718_153040.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/welding/20200718_161047.jpg">
 </div>
 
 <div class="slideshowGroup" id="wente">
-	<img class="slideshowImage" src="slideshow/wente/DSC03533.jpg">
-	<img class="slideshowImage" src="slideshow/wente/DSC03606.jpg">
-	<img class="slideshowImage" src="slideshow/wente/DSC03616.jpg">
-	<img class="slideshowImage" src="slideshow/wente/DSC03645.jpg">
-	<img class="slideshowImage" src="slideshow/wente/DSC03668.jpg">
-	<img class="slideshowImage" src="slideshow/wente/IMG_2847.jpg">
-	<img class="slideshowImage" src="slideshow/wente/IMG_3283.jpg">
-	<img class="slideshowImage" src="slideshow/wente/IMG_3303.jpg">
-	<img class="slideshowImage" src="slideshow/wente/IMG_3321.jpg">
-	<img class="slideshowImage" src="slideshow/wente/IMG_3392.jpg">
-	<img class="slideshowImage" src="slideshow/wente/IMG_3538.jpg">
-	<img class="slideshowImage" src="slideshow/wente/IMG_3574.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/DSC03533.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/DSC03606.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/DSC03616.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/DSC03645.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/DSC03668.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/IMG_2847.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/IMG_3283.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/IMG_3303.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/IMG_3321.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/IMG_3392.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/IMG_3538.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/wente/IMG_3574.jpg">
 </div>
 
 <div class="slideshowGroup" id="woodfires">
-	<img class="slideshowImage" src="slideshow/woodfires/DSC03253.jpg">
-	<img class="slideshowImage" src="slideshow/woodfires/DSC03268.jpg">
-	<img class="slideshowImage" src="slideshow/woodfires/DSC03300.jpg">	
-	<img class="slideshowImage" src="slideshow/woodfires/DSC03302.jpg">
-	<img class="slideshowImage" src="slideshow/woodfires/IMG_2201.jpg">
-	<img class="slideshowImage" src="slideshow/woodfires/IMG_2243.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/woodfires/DSC03253.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/woodfires/DSC03268.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/woodfires/DSC03300.jpg">	
+	<img class="slideshowImage" src="#" img-src="slideshow/woodfires/DSC03302.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/woodfires/IMG_2201.jpg">
+	<img class="slideshowImage" src="#" img-src="slideshow/woodfires/IMG_2243.jpg">
 </div>
 
 <div class="slideshowGroup" id="ziplining">
-	<img class="slideshowImage" src="slideshow/ziplining/Scouts-Ziplining-000015.jpeg">
-	<img class="slideshowImage" src="slideshow/ziplining/Scouts-Ziplining-000021.jpeg">
-	<img class="slideshowImage" src="slideshow/ziplining/Scouts-Ziplining-000032.jpeg">	
-	<img class="slideshowImage" src="slideshow/ziplining/Scouts-Ziplining-000034.jpeg">
-	<img class="slideshowImage" src="slideshow/ziplining/Scouts-Ziplining-000047.jpeg">
-	<img class="slideshowImage" src="slideshow/ziplining/Scouts-Ziplining-000058.jpeg">
-	<img class="slideshowImage" src="slideshow/ziplining/Scouts-Ziplining-000085.jpeg">
-	<img class="slideshowImage" src="slideshow/ziplining/Scouts-Ziplining-000087.jpeg">
-	<img class="slideshowImage" src="slideshow/ziplining/Scouts-Ziplining-000091.jpeg">
+	<img class="slideshowImage" src="#" img-src="slideshow/ziplining/Scouts-Ziplining-000015.jpeg">
+	<img class="slideshowImage" src="#" img-src="slideshow/ziplining/Scouts-Ziplining-000021.jpeg">
+	<img class="slideshowImage" src="#" img-src="slideshow/ziplining/Scouts-Ziplining-000032.jpeg">	
+	<img class="slideshowImage" src="#" img-src="slideshow/ziplining/Scouts-Ziplining-000034.jpeg">
+	<img class="slideshowImage" src="#" img-src="slideshow/ziplining/Scouts-Ziplining-000047.jpeg">
+	<img class="slideshowImage" src="#" img-src="slideshow/ziplining/Scouts-Ziplining-000058.jpeg">
+	<img class="slideshowImage" src="#" img-src="slideshow/ziplining/Scouts-Ziplining-000085.jpeg">
+	<img class="slideshowImage" src="#" img-src="slideshow/ziplining/Scouts-Ziplining-000087.jpeg">
+	<img class="slideshowImage" src="#" img-src="slideshow/ziplining/Scouts-Ziplining-000091.jpeg">
 </div>
 
 </p>

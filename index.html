@@ -254,6 +254,7 @@
 				img.onclick = function(){
 				  modal.style.display = "block";
 				  captionText.innerHTML = this.alt;
+				  window.scrollTo(0,0);
 				  loadSlideshowForDivID(slideshowDivID);
 				}
 			}
@@ -305,12 +306,14 @@ Check out the photos below to see what we've been up to! Click on a photo to see
 <!-- The Modal -->
 <div id="myModal" class="modal">
   <span class="close">&times;</span>
+  <div class="">
   <img class="modal-content horiz-centered" id="modalImg"><br/>
   <div class="navigationButtons">
 	  <button class="w3-button w3-display-left" onclick="showSlideAtIndex(gCurrentSlideIndex - 1, gCurrentSlideshowImageArray)">&#10094;</button>
 	  <button class="w3-button w3-display-right" onclick="showSlideAtIndex(gCurrentSlideIndex + 1, gCurrentSlideshowImageArray)">&#10095;</button>
 </div>>
   <div id="caption"></div>
+  </div>
   </div>
 
 <div class="slideshowGroup" id="acorn-hike">

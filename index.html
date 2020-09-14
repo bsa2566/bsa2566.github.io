@@ -221,7 +221,7 @@
 							var src = image.getAttribute("src");
 							var imgSrc = image.getAttribute("img-src");
 							if (imgSrc != null)
-								image.setAttribute("src", imgSrc);
+								image.src = imgSrc;
 						}
 
 						gCurrentSlideshowImageArray = images;
@@ -259,6 +259,8 @@
 				// When the user clicks on <span> (x), close the modal
 				span.onclick = function() {
 				  modal.style.display = "none";
+				  var modalImg = document.getElementById("modalImg");
+				  modalImg.src = "#";
 				}
 			}
 			</script>
